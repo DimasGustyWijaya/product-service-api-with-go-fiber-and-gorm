@@ -19,6 +19,10 @@ func main() {
 	itemController := controller.NewItemsController(itemService)
 
 	router.Post("/api/addItems", itemController.Create)
+	router.Put("/api/updateItems/:id", itemController.Update)
+	router.Get("/api/getItems/:id", itemController.FindByID)
+	router.Get("/api/getItems", itemController.FindAll)
+	router.Delete("/api/deleteItems/:id", itemController.Delete)
 
 	err := router.Listen("localhost:5600")
 	if err != nil {
